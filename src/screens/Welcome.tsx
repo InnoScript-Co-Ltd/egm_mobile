@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { colors, dimission, fontSizes } from './styles/variables';
+import { colors, dimission, fontSizes } from '../styles/variables';
 
 const styles = StyleSheet.create({
     container: {
@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
     },
 });
 
-export default function Welcome() {
+export default function Welcome({navigation}: any) {
+
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
@@ -86,9 +87,9 @@ export default function Welcome() {
             </View>
 
             <View style={styles.warningContent}>
-                <Text style={{fontWeight: '800'}}> Risk Warning: </Text>
-                <Text style={{lineHeight: 20, textAlign: 'justify', paddingTop: 5, paddingEnd: 5}}>
-                    Trading on financial markets carries risks. Contracts for Difference (‘CFDs’) are complex financial
+                <Text style={{fontWeight: '800', color: colors.white}}> Risk Warning: </Text>
+                <Text style={{lineHeight: 20, textAlign: 'justify', paddingTop: 5, paddingEnd: 5, color: colors.white}}>
+                    Trading on financial markets carries risks. Contracts for Difference ('CFDs') are complex financial
                     products that are traded on margin. Trading CFDs carries a high level of risk since leverage can work
                     both to your advantage and disadvantage. As a result, CFDs may not be suitable for all investors
                     because you may lose all your invested capital. You should not risk more than you are prepared to lose.
@@ -98,19 +99,22 @@ export default function Welcome() {
             </View>
 
             <View style={styles.btnGroup}>
-                <TouchableOpacity style={{...styles.btnPrimary, backgroundColor: colors.primary }}> 
+                <TouchableOpacity
+                    style={{...styles.btnPrimary, backgroundColor: colors.primary }}
+                    onPress={() => navigation.navigate('Login')}
+                >
                     <Text style={{...styles.btnText, color: colors.black}}> Login </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{...styles.btnPrimary, backgroundColor: colors.black}}> 
+                <TouchableOpacity style={{...styles.btnPrimary, backgroundColor: colors.black}}>
                     <Text style={{...styles.btnText, color: colors.white}}> Register </Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.footer}>
-                <Text style={{fontSize: fontSizes.small}}> Copyright © 2024 | Evan Global Management. All rights reserved.</Text>
-                <Text style={{fontSize: fontSizes.small}}> V.1.0.0 </Text>
+                <Text style={{fontSize: fontSizes.small, color: colors.white}}> Copyright © 2024 | Evan Global Management. All rights reserved.</Text>
+                <Text style={{fontSize: fontSizes.small, color: colors.white}}> V.1.0.0 </Text>
             </View>
-        </View> 
+        </View>
     );
 }
